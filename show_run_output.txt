@@ -1,0 +1,31 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+41-resortAP(config)#hostname 41-OKADA-AP
+41-OKADA-AP(config)#dot11 ssid 41-okadaFreewifi
+41-OKADA-AP(config-ssid)#vlan 41
+Warning: Vlan 41 already mapped to SSID 41-CCNAWIFI-RENZ. SSIDs with same vlan association cannot be attached to the same interface.
+
+41-OKADA-AP(config-ssid)#authentication open
+41-OKADA-AP(config-ssid)#authentication key-management wpa
+41-OKADA-AP(config-ssid)#wpa-psk ascii C1sc0123
+41-OKADA-AP(config-ssid)#guest-mode
+41-OKADA-AP(config-ssid)#default Int Dot11Radio 0
+Cannot disable station-role
+
+Interface Dot11Radio0 set to default configuration
+41-OKADA-AP(config)#default interface gigabitEthernet 0
+%command not allowed, cannot remove bridge-group 1
+Interface GigabitEthernet0 set to default configuration
+41-OKADA-AP(config)#int dot11radio 0
+41-OKADA-AP(config-if)#no shut
+41-OKADA-AP(config-if)#channel 7
+41-OKADA-AP(config-if)#encryption mode ciphers tkip
+41-OKADA-AP(config-if)#encryption vlan 41 mode ciphers tkip
+41-OKADA-AP(config-if)#ssid 41-okadaFreewifi
+41-OKADA-AP(config-if)#exit
+41-OKADA-AP(config)#interface dot11radio 0.41
+41-OKADA-AP(config-subif)#encapsulation dot1q 41 native
+41-OKADA-AP(config-subif)#bridge-group 1
+41-OKADA-AP(config-subif)#exit
+41-OKADA-AP(config)#end
+41-OKADA-AP#
