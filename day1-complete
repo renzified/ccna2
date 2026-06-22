@@ -1,0 +1,199 @@
+Good morning, everyone!
+Kindly create / sign-in your GitHub account
+https://github.com/
+Fork repository: https://github.com/rivancorp/ccna2
+then open "Day1-May5Sir.Rob.txt 
+
+WI-FI and PC Pass: C1sc0123
+Download on your Phone: GitHub, Linphone, Fing, Wi-Fi Analyzer, postman (create account) 
+
+TASK1: RIGHT TOOLS FOR NETWORK ENGINEERS:
+hardware: console cable
+software: POOR: PUTTY,  RICH: secureCRT (199 usd)
+CUBAO:
+sr = sh run
+ss = sh start
+crs = copy run start
+siib = sh ip int brief
+svb = sh vlan brief
+sit = sh int trunk
+smac = sh mac address-table
+sir = sh ip route
+scn = sh cdp neighbor
+
+
+why Callmanager voip earn x as much:
+L7: app
+L6: pre
+L5: sess
+L4: trans
+L3: NEtw
+L2: dataLink: MacAddress:
+L1: physical: 802.3af 48v
+
+TASK2: Realword vs cloud/VM/Dockers
+  netEng,netAnly vs devops,secdevoops,ML
+
+the JOBofEDGE:
+routingStatic: ccna
+routingOSPF: ccna
+routingEIGRP: CCNP
+routingBGP: CCNP
+routingVPN: CCIE
+
+TASK5: lethal Combo: rare combo:
+laptop: ryzen9, i9, rtx5070, 64gb, 4th ssd: = 65k realmi
+NetworkEngineer: Network:Cisco + PythonPro + jsonScriptin
+9of10:NetEng: hate coding.
+
+name:  m-OKADA-AP
+SSID: m-okadaFreewifi
+channel: 1-13
+password: C1sc0123
+
+
+---
+
+
+open vmware and find:
+IAM and w2022
+right click --> manage --> delete from disk
+
+
+DNS -
+
+WINSERVER - ns.ccna#.com  10.#.1.8
+CTAAS - ct.ccna#.com  10.#.1.2
+CBABA - cb.ccna#.com  10.#.1.4
+CUCM  - cm.ccna#.com  10.#.100.8
+EDGE  - ed.ccna#.com  10.#.#.1
+C6    - c6.ccna#.com  10.#.50.6
+C8    - c8.ccna#.com  10.#.50.8
+
+
+!@CoreTAAS,baba
+conf t
+ ip domain lookup
+ ip name-server 10.m.1.8
+ end
+
+
+Login: root
+Pass: C1sc0123
+
+Get IP:
+rm -rf /etc/udev/rules.d/70-persistent-net.rules
+reboot
+
+Set NetAdapters:
+NetAdapter 1: NAT (208.8.8.0/24)
+NetAdapter 2: VMNet15 (10.255.10.0/24)
+NetAdapter 3: VMNet16 (10.69.255.0/29)
+
+!@cmd
+route add 172.16.29.0 mask 255.255.255.0 10.69.255.6
+
+
+
+
+
+
+route  add   10.0.0.0   mask   255.0.0.0    10.12.1.4
+route  add  200.0.0.0   mask  255.255.255.0   10.12.1.4
+
+1. Configure C1/C2 as DHCP Servers 
+for P1/P2
+C1: 10.2.1.100 - 10.2.1.199
+C2: 10.2.1.200 - 10.2.1.254
+
+!@C1
+conf t
+ ip dhcp excluded-add 10.2.1.1 10.2.1.99
+ ip dhcp excluded-add 10.2.1.200 10.2.1.254
+ ip dhcp pool MGMTPOOL
+  network         10.2.1.0  255.255.255.0
+  default-router  10.2.1.1
+  dns-server      10.2.1.1
+  domain-name     MGMT.COM
+  end
+
+!@A1
+conf t
+ int e0/0
+  switchport mode access
+  switchport access vlan 10
+  end
+
+
+!@P1
+conf t
+ int e0/0
+  no shut
+  ip add dhcp
+  end
+bp  -  show ip int br
+
+
+
+
+!@C2
+conf t
+ ip dhcp excluded-add 10.2.1.1 10.2.1.199
+ ip dhcp pool MGMTPOOL
+  network         10.2.1.0  255.255.255.0
+  default-router  10.2.1.2
+  dns-server      10.2.1.2
+  domain-name     MGMT.COM
+  end
+
+
+!@A2
+conf t
+ int e1/0
+  switchport mode access
+  switchport access vlan 10
+  end
+
+
+!@P2
+conf t
+ int e1/0
+  no shut
+  ip add dhcp
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
