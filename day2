@@ -1,0 +1,494 @@
+LINE 396-404: EDGE
+LINE 407-413: COREBABA
+LINE 416-420: CUCM
+show ip route ospf
+show ip ospf neighbor
+
+
+LINE 3:33- CORETAAS
+LINE 37-71: COREBABA
+LINE 76-84: TAAS/ BABA
+LINE 89-94: TAAS/ BABA
+LINE 100-126: COREBABA
+LINE 130-168: COREBABA
+LINE 171- 180: COREBABA
+LINE 187-204: CUCM
+LINE 207-220: CUCM
+LINE 223-262: CUCM
+LINE 265-276: CUCM
+LINE 279-283: CUCM 
+LINE 286-358: CUCM
+LINE 364-389: EDGE 
+
+
+
+EXPERT LEVEL: done na
+SSID: "m-Day2WIFIiamGREAT"
+channel - "7"
+
+---
+
+
+RIVAN NETWORK ENG TRAINING DAY2:
+
+TASK1: PANGET BA PHONE MO?
+PRICE? CAMERA? CPU? MEMORY?
+
+TASK2: HOW TO USE THE RIVAN FINGER METHOD:
+- bruce lee technique: brain reset:
+
+fix ur brain:
+
+PERA               IPV4              IPV6
+0-9               0-255              0-9,A-F
+
+4999          4.255.255.255          4FFF
+5000            5.0.0.0             :5000:
+5001            5.0.0.1             :5001:
+
+2,999        2.255.255.255         2FFF   
+3,000          3.0.0.0             :3000:
+3001           3.0.0.1               3001
+
+7098          7.0.255.254           70FE 
+7099          7.0.255.255           70FF
+7100           7.1.0.0              7100
+
+6908         6.255.0.254           6F0E
+6909         6.255.0.255           6F0F
+6910          6.255.1.0            6F10
+
+task3: how to be a Genius? buy Drugs. and Be einstein
+
+task4: bit length:
+195 = 8b
+13 =  4b
+1750 = 11b
+855 =  10b
+2,700 = 12 b
+2 =  2b
+376 =   9b
+888 = 10 b
+8 = 4 b
+212 = 8 b 
+4,500 = 13 b
+81 = 7 b
+8,500  =14 b  
+55 = 6 b
+
+task3: how to subnet ipv4: 10.0.0.0/8 (16M)
+2 methods: WorldMethod(10 to 15mins) vs RivanMethod
+3 secs: "Csi: convert it, subractit, IpasoksaHiwa:"
+ex1: accenture usa will have a branch in:
+
+    accentureSG.com    accenturePH.com  accentureCH.com accentureJP.com
+     380 nodes/user      1500agents       2500agents       90agents
+Convert:     9bits            11bits           12bits          7bits
+subract/32-  /23             /21              /20             /25
+          3rd,2i           3rd,8i            3rd,16i         4th,128i
+  ipasok2isa3rd       ipasok8isa3rd     ipasok16isa3rd   ipasok128is4th
+UrSubnet:  +1
+    10.0.2.0/23        10.0.8.0/21         10.0.16.0/20     10.0.0.128/25
+1st: 10.0.2.1          10.0.8.1           10.0.16.1
+lastip:broadcast:
+     10.0.3.255       10.0.15.255         10.0.31.255       10.0.0.255
+NOTurs:
+  10.0.4.0/?          10.0.16.0/?         10.0.32.0/?      10.0.1.0/?  
+
+        accentureIN.com    accentureTW.com  accentureAU.com  accentureTH.com
+          4800agents        50agents         240agents          25agents
+convert:     13bits           6bits            8bits             5bits
+subract:    /19               /26             /24                 /27
+            3rd,32i           4th,64i         3rd,1i              4th,32i
+       pasok32isa3rd        pasok64i4th    ipasok1isa3rd       ipasok32isa4th
+ipasokhiwa:
+      10.0.32.0/19         10.0.0.64/26    10.0.1.0/24        10.0.0.32/27
+1st:  10.0.32.1           10.0.0.65        10.0.1.1           10.0.0.33
+lastUse: 10.0.63.254      10.0.0.126       10.0.1.254          10.0.0.62
+LstIP: 10.0.63.255        10.0.0.127       10.0.1.255         10.0.0.63
+NOTurs:
+    10.0.64.0/?            10.0.0.128/?     10.0.2.0/?        10.0.0.64/?   
+
+172.16.0.0/16
+
+
+   P1                         P2                     S2                S1
+                            .33-.35                 .1 - .100          .1-.2
+  VLAN 13                       VLAN 69                 VLAN 67             
+
+      lto.gov.ph         comelec.gov.ph           dpwh.gov.ph        pnp.gov.ph
+      700agents            20agents               2800agents         10
+conve:  10                 5bits                   12bits            4bits
+subtct: /22                  /27                   /20               /28  
+ipasok:4i3rd               ipasok32i4th            pasok16isa3rd    pasok16i4th
+172.16.4.0/22          172.16.0.32/27            172.16.16.0/20    172.16.0.16
+172.16.4.1                    0.33                      16.1              0.17
+      7.254                   0.62                       31.254           0.30 
+172.16.7.255                  0.63                       31.255           0.31
+172.16.8.0/?           172.16.0.64                172.16.32.0/?    172.16.0.32
+
+IMPLEMENT IPAM: IP ADDRESS MANAGEMENT SERVER: IPAMS:
+!@C1
+Config t
+ vlan 13
+  name LTO.GOV.PH                              !DOMAIN NAME
+ Interface vlan 13
+  desc LTO.GOV.PH
+  no shut
+  ip add 172.16.4.1 255.255.252.0              !FIRST VALID IP
+  exit
+ ip dhcp excluded-add 172.16.4.1 172.16.4.100  !EXCLUDE
+ ip dhcp pool LTO.GOV.PH
+  network 172.16.4.0 255.255.252.0             !NETWORK
+  default-router 172.16.4.1                    !FIRST VALID/C1
+  domain-name LTO.GOV.PH                       
+  dns-server 8.8.8.8
+  end
+sh ip dhcp binding
+
+!@A1:
+config t
+ Int e0/0
+  switchport mode access
+  switchport access vlan 13
+  end
+sh vlan brief
+
+!@P1:
+config t
+ Int e0/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+-- COMELEC
+
+!@C2/D2
+Config t
+ vlan 69
+  name COMELEC.GOV.PH                            !DOMAIN NAME
+ Interface vlan 69
+  desc COMELEC.GOV.PH
+  no shut
+  ip add 172.16.0.33 255.255.255.224            !FIRST VALID IP
+  exit
+ ip dhcp excluded-add 172.16.0.33   172.16.0.35  !EXCLUDE
+ ip dhcp pool COMELEC.GOV.PH
+  network 172.16.0.32 255.255.255.224             !NETWORK
+  default-router 172.16.0.33                    !FIRST VALID/C1
+  domain-name COMELEC.GOV.PH                       
+  dns-server 8.8.8.8
+  end
+sh ip dhcp binding
+
+!@A2:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 69
+  end
+sh vlan brief
+
+!@P2:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+
+
+
+-----    DPWH
+!@C1/D1
+Config t
+ vlan 67
+  name DPWH.GOV.PH                            !DOMAIN NAME
+ Interface vlan 67
+  desc DPWH.GOV.PH
+  no shut
+  ip add 172.16.16.1 255.255.240.0            !FIRST VALID IP
+  exit
+ ip dhcp excluded-add 172.16.16.1   172.16.16.100  !EXCLUDE
+ ip dhcp pool DPWH.GOV.PH
+  network 172.16.16.0 255.255.240.0             !NETWORK
+  default-router 172.16.16.1                    !FIRST VALID/C1
+  domain-name DPWH.GOV.PH                      
+  dns-server 8.8.8.8
+  end
+sh ip dhcp binding
+
+!@C2:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 67
+  end
+sh vlan brief
+
+!@S2:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+
+-----    TELUS.COM
+!@C2
+Config t
+ vlan 193
+  name TELUS.COM                            !DOMAIN NAME
+ Interface vlan 193
+  desc TELUS.COM
+  no shut
+  ip add 192.168.147.161  255.255.255.224       !FIRST VALID IP
+  exit
+ ip dhcp excluded-add 192.168.147.161  192.168.147.162  !EXCLUDE
+ ip dhcp pool TELUS.COM
+  network 192.168.147.160 255.255.255.224             !NETWORK
+  default-router 192.168.147.161               !FIRST VALID/C1
+  domain-name TELUS.COM                    
+  dns-server 8.8.8.8
+  end
+sh ip dhcp binding
+
+!@C2:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 67
+  end
+sh vlan brief
+
+!@S2:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+---
+
+5400 =   13b
+65   =   7b
+4000 =   12b
+27   =   5b
+600  =   10b
+
+
+
+---
+
+!@CoreTAAS
+conf t
+ int fa0/9
+  no sw      .160
+  ip add 192.168.147.161 255.255.255.224
+  no shut
+  end
+
+!@CoreBABA
+conf t
+ int fa0/9
+  no sw
+  ip add 192.168.147.162 255.255.255.224
+  no shut
+  end
+
+
+FIND THE NETWORK:
+
+192.168.147.200 /27   (4th, 32i)
+           .192 /27
+
+10.41.150.115  /26
+STEP 1: RIVAN FORMAT  /26 = (4TH, 64I)
+STEP 2: 0, 64, 128
+
+network 10.41.150.64/26
+
+
+192.168.26.211 /18  (3rd, 64i)
+192.168.0.0/18
+       .64
+       .128
+
+172.28.228.144/18 (3rd, 64i)
+     
+64 + 64 = 128
+128 + 64 = 192
+192 + 64 = 256
+
+172.28.192.0/18
+
+
+
+- 172.28.228.144/21
+(3rd, 8i)
+
+80 + 80 = 160
+160 + 40 = 200
+208
+216
+224
+232
+
+172.28.224.0/21
+172.28.224.1
+
+
+
+----
+
+P1                         P2                     S2                S1
+                            .33-.35                 .1 - .100          .1-.2
+  VLAN 13                       VLAN 69                 VLAN 67             
+
+      lto.gov.ph         comelec.gov.ph           dpwh.gov.ph        pnp.gov.ph
+      700agents            20agents               2800agents         10
+conve:  10                 5bits                   12bits            4bits
+subtct: /22                  /27                   /20               /28  
+ipasok:4i3rd               ipasok32i4th            pasok16isa3rd    pasok16i4th
+172.16.4.0/22          172.16.0.32/27            172.16.16.0/20    172.16.0.16
+172.16.4.1                    0.33                      16.1              0.17
+      7.254                   0.62                       31.254           0.30 
+172.16.7.255                  0.63                       31.255           0.31
+
+172.16.8.0/?           172.16.0.64                172.16.32.0/?    172.16.0.32
+
+
+
+
+
+!@A2:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 69
+  end
+sh vlan brief
+
+
+!@P2:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+----
+
+
+!@C2:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 67
+  end
+sh vlan brief
+
+!@S2:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+
+
+
+
+
+Given:
+hosts 28
+ip address space: 192.168.147.128/26 
+
+Convert: 28 = 5 bits
+Subtract: /32 - 5 bits = /27  (4th, 32i)
+ipasok32i sa 4th
+
+TELUS.COM 
+   NETWORK: 192.168.147.160/27   255.255.255.224
+   1ST VALID:  192.168.147.161
+   LAST VALID: 192.168.147.190
+   BROADCAST:  192.168.147.191
+
+NOT TELUS: 192.168.147.192/?
+
+
+
+---
+
+
+!@C1:
+config t
+ Int e1/0
+  switchport mode access
+  switchport access vlan 193
+  end
+sh vlan brief
+
+!@S1:
+config t
+ Int e1/0
+  no ip address dhcp
+  ip address dhcp
+  no shut
+  end
+bp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
